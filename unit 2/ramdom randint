@@ -1,0 +1,7 @@
+import random
+a = random.randint(1, 30)
+b = input("Guess a number between 1 and 30: ")
+if int(b) == a:
+    print("You won!!!")
+else:
+    print("Sadly you lost):")
