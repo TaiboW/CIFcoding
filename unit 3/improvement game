@@ -37,9 +37,9 @@ elif player == 2:
         guess_1 = int(input(a + " guess a number between 1 and 60: "))
         if guess_1 > 60 or guess_1 < 1:
             print("Number must be between 1 and 60.")
-            guess_1 = int(input(b +" please guess again between 1 and 60: "))
+            guess_1 = int(input(a +" please guess again between 1 and 60: "))
             if c == guess_1:
-                print(b + " you won your the winner!!!")
+                print(a + " you won your the winner!!!")
                 break
             elif c <= guess_1:
                 print("Too big")
@@ -47,7 +47,7 @@ elif player == 2:
                 print("Too small")
         else:
             if c == guess_1:
-                print(b + " you won!!!")
+                print(a + " you won!!!")
                 break
             elif c <= guess_1:
                 print("Too big")
