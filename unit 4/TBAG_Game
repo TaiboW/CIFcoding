@@ -1,0 +1,38 @@
+print("._.__._.__._.__._.__._.__._.__._.__._.__._.__._.__._.__._.__._.__._.__._.__._.__._.__._.")
+def instruction(name):
+    print("Hi "+name+" here are the instructions: ")
+    print("     -You will have 3 cards that will give you a benefit or weakness (you can only choose one)")
+    print("     -In normaly you will have 9 lives")
+    print("     -You will have to survive a day in the enchanted forest")
+    print("     -You will have to choose the right path or you may loose a live")
+    return ("Here are the card's")
+name = input("Input your name pls: ")
+print(instruction(name))
+print("_____________________")
+import random
+cards = 0
+lives = 9
+for cards in range (3):
+    a = random.randint(1,10)
+    if a == 1:
+        print("Gain 2 lives")
+    elif a == 2:
+        print("Gain 1 live")
+    elif a == 3:
+        print("Lose 2 lives")
+    elif a == 4:
+        print("Lose 1 live")
+    elif a == 5:
+        print("When go wrong path lose 0.5 live")
+    elif a == 6:
+        print("When go wrong path lose 1.5 live")
+    elif a == 7:
+        print("Gain 0.5 live")
+    elif a == 8:
+        print("Gain 1.5 lives")
+    elif a == 9:
+        print("When go wrong path lose 2 lives")
+    else:
+        print("Lose 0.5 live")
+print("_____________________")
+print("What benefit or weakness do you choose")
