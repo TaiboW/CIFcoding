@@ -1,0 +1,7 @@
+forecast = [
+    ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+    ["6.7°C", "11.7°C", "11.1°C", "7.1°C", "6.9°C", "9.9°C", "10.8°C"]
+]
+
+for row in forecast:
+    print(row)
