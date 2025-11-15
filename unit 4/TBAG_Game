@@ -18,11 +18,11 @@ Cards_list = [
     ["Lose 2 lives",lives-2],
     ["Lose 1 live",lives-1],
     ["When wrong answer lose 3 live",lives+0],
-    ["Nothing",+0],
-    ["Gain 0.5 live",+0.5],
+    ["Nothing",lives+0],
+    ["Gain 0.5 live",lives+0.5],
     ["Gain 1.5 lives",+1.5],
-    ["When wrong answer lose 2 lives",+0],
-    ["Lose 0.5 live",-0.5]
+    ["When wrong answer lose 2 lives",lives+0],
+    ["Lose 0.5 live",lives-0.5]
 ]
 i = 0
 b = []
