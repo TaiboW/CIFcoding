@@ -35,8 +35,6 @@ for i in range(3):
     b.append(Cards_list[a][0])
     d.append(Cards_list[a][1])
 print("_____________________")
-print(d)
-print(b)
 choice = int(input("What benefit or weakness do you choose(1, 2 or 3): "))
 choice -= 1 
 print("You chose "+b[choice])
