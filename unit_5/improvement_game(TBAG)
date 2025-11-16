@@ -1,4 +1,5 @@
 print("._.__._.__._.__._.__._.__._.__._.__._.__._.__._.__._.__._.__._.__._.__._.__._.__._.__._.")
+#define instruction
 def instruction(name):
     print("Hi "+name+" here are the instructions: ")
     print("     -You will have 3 cards that will give you a benefit or weakness (you can only choose one)")
@@ -13,6 +14,7 @@ print(instruction(name))
 print("_____________________")
 import random
 lives = 9
+#list of benefit and weakness
 Cards_list = [
     ["Gain 2 lives",lives+2],
     ["Gain 1 live",lives+1],
@@ -29,6 +31,7 @@ i = 0
 b = []
 c = 1
 d = []
+#printing the 3 cards that user can choose
 for i in range(3):
     a = random.randint(0,9)
     f = (str(c) + "." + Cards_list[a][0])
@@ -36,8 +39,6 @@ for i in range(3):
     b.append(Cards_list[a][0])
     d.append(Cards_list[a][1])
 print("_____________________")
-print(d)
-print(b)
 choice = int(input("What benefit or weakness do you choose(1, 2 or 3): "))
 choice -= 1
 lives = d[choice]
@@ -45,6 +46,7 @@ print("You chose "+b[choice])
 print("You still have  " +str(d[choice])+" lives")
 print(" ")
 print("  ")
+#list of questions and answer
 question_list = [
     [["Who is the mayor of Toronto(right now)?"],["Olivia Chow"]],
     [["In wich province is Toronto located"],["ontario"]],
@@ -59,6 +61,7 @@ question_list = [
 print("._.__._.__._.__._.__._.Start._.__._.__._.__._.__._.")
 
 print("Among the 9 questions there will have factual questions, trick questions and riddles")
+#printing question until lives higher than 16 or lower than 0
 while 16 > lives and lives > 0:
     import random
     quest = random.randint(0,8)
@@ -71,6 +74,7 @@ while 16 > lives and lives > 0:
         print("WRONG")
         lives -= 1
     print("You have "+ str(lives)+" lives")
+#Win or not
 if lives <= 0:
     print("You lost SADLY")
 else:
