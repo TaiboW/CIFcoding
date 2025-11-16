@@ -3,7 +3,6 @@ def instruction(name):
     print("Hi "+name+" here are the instructions: ")
     print("     -You will have 3 cards that will give you a benefit or weakness (you can only choose one)")
     print("     -In normaly you will have 9 lives")
-    print("     -You will have to survive a day in the enchanted forest")
     print("     -You will have to type the right answer to gain lives or lose lives")
     print("     -If your live reaches 0 you lose and if it reaches to 16 you win")
     return ("Here are the card's")
