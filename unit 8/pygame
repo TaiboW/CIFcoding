@@ -1,0 +1,37 @@
+import pygame
+pygame.init()
+red = (255,0,0)
+black = (0,0,0)
+boxx = 0
+boxy = 0
+box_x = 0
+box_y = 570
+width = 800
+height = 600
+x = 100
+y = 100
+rect1 = pygame.Rect(boxx,boxy,30,30)
+rect2 = pygame.Rect(box_x,box_y,30,30)
+recty = pygame.Rect(x,y,0.0000000001,0.00000000001)
+
+screen = pygame.display.set_mode((width, height))
+
+clock = pygame.time.Clock()
+while True:
+    clock.tick(120)
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            exit()
+    boxx += 1
+    rect1 = pygame.Rect(boxx,boxy,30,30)
+    pygame.draw.rect(screen,red,rect1)
+    pygame.display.update()
+    box_x += 1
+    rect2 = pygame.Rect(box_x,box_y,30,30)
+    pygame.draw.rect(screen,red,rect2)
+    pygame.display.update()
+    x+=1
+    pygame.draw.rect(screen,black,recty)
+    pygame.display.update()
+    recty = pygame.Rect(x,y,1,1)
+    screen.fill(black)
