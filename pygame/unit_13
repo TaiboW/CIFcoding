@@ -1,0 +1,125 @@
+import pygame
+import random as rd
+pygame.init()
+points = 0
+game_over = 0
+enemys = []
+enemy_speed = 3
+enemy_y = 0
+bullets = []
+bullet_speed = 5
+bulletW = 5
+bulletH = 10
+timer = 0
+bullet_recharge = 60
+bullet_timer = 0
+green = (0, 255, 0)
+pink = (255, 182, 193)
+white = (255, 255, 255)
+black = (0, 0, 0)
+boxx = 324
+boxy = 700
+box_x = 300
+box_y = 700
+speed = 4
+width = 600
+height = 800
+lives = 20
+wining_losing_timer = 0
+close_screen = 360
+screen = pygame.display.set_mode((width, height))
+clock = pygame.time.Clock()
+def shoot():
+    bullet = pygame.Rect(boxx, boxy, bulletW, bulletH)
+    bullets.append(bullet)
+while True:
+    clock.tick(120)
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            exit()
+    screen.fill(black)
+    rect2 = pygame.Rect(box_x + 12, box_y, 30, 30)
+    pygame.draw.rect(screen, pink, rect2)
+    keys = pygame.key.get_pressed()
+    if keys[pygame.K_LEFT]:
+        box_x -= speed
+        boxx -= speed
+    if keys[pygame.K_RIGHT]:
+        box_x += speed
+        boxx += speed
+    if keys[pygame.K_UP]:
+        box_y -= speed
+        boxy -= speed
+    if keys[pygame.K_DOWN]:
+        box_y += speed
+        boxy += speed
+    if keys[pygame.K_SPACE] and bullet_timer >= bullet_recharge:
+        shoot()
+        bullet_timer = 0
+    if box_x < 0 - 10:
+        box_x = 0 - 10
+        boxx = 12
+    if box_x > 600 - 30:
+        box_x = 600 - 30
+        boxx = 600 - 5
+    if box_y < 0:
+        box_y = 0
+        boxy = 0
+    if box_y > 800 - 30:
+        box_y = 800 - 30
+        boxy = 800 - 30
+    spawn_interval = 180
+    def spawn_enemy():
+        enemy_x = rd.randint(1,575)
+        enemy = pygame.Rect(enemy_x, enemy_y, 30, 30)
+        enemys.append(enemy)
+    timer += 1
+    bullet_timer += 1
+    if timer >= spawn_interval:
+        spawn_enemy()
+        timer = 0
+    for enemy in enemys[:]:
+        enemy.y += enemy_speed
+        pygame.draw.rect(screen, green, enemy)
+        if enemy.top > height:
+            enemys.remove(enemy)
+            lives -= 1
+    for bullet in bullets[:]:
+        bullet.y -= bullet_speed
+        pygame.draw.rect(screen, white, bullet)
+        if bullet.bottom < 0:
+            bullets.remove(bullet)
+    for bullet in bullets[:]:
+        for enemy in enemys[:]:
+            if bullet.colliderect(enemy):
+                bullets.remove(bullet)
+                enemys.remove(enemy)
+                points += 5
+                break
+    myfont = pygame.font.SysFont("Times New Roman", 40)
+    textsurface = myfont.render("Lives left:" + str(lives), False, (255,255,255))
+    screen.blit(textsurface, (20, 0))
+    myfont = pygame.font.SysFont("Times New Roman", 40)
+    textsurface = myfont.render("Total points gained:" + str(points), False, (255,255,255))
+    screen.blit(textsurface, (20, 50))
+    if lives <= 0:
+        screen.fill(black)
+        Newfont = pygame.font.SysFont("Times New Roman", 60)
+        Newsurface = Newfont.render("Game Over", False, (255,0,0))
+        screen.blit(Newsurface, (175,300))
+        pygame.display.update()
+        wining_losing_timer += 1
+        if wining_losing_timer >= close_screen:    
+            pygame.quit()
+            exit()
+    elif points >= 100:
+        screen.fill(black)
+        Newfont = pygame.font.SysFont("Times New Roman", 60)
+        Newsurface = Newfont.render("You won!!!", False, (255,255,0))
+        screen.blit(Newsurface, (175,300))
+        pygame.display.update()
+        wining_losing_timer += 1
+        if wining_losing_timer >= close_screen:
+            pygame.quit()
+            exit()
+    pygame.display.update()
